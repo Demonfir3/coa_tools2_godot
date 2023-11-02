@@ -313,6 +313,10 @@ class COATOOLS2_PT_ObjectProperties(bpy.types.Panel):
                 row.prop(
                     obj.data.coa_tools2, "hide_base_sprite", text="Hide Base Sprite"
                 )
+                row = layout.row(align=True)
+                row.prop(
+                    obj.data.coa_tools2, "remove_base_sprite", text="Remove base Sprite"
+                )
                 if (
                     len(obj.data.vertices) > 4
                     and obj.data.coa_tools2.hide_base_sprite == False

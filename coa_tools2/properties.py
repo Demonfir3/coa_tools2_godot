@@ -3,6 +3,7 @@ from bpy.props import BoolProperty, FloatVectorProperty, IntProperty, FloatPrope
 # from . functions import *
 from . import functions
 from . import outliner
+from .operators.exporter import export_helper
 
 def hide_bone(self, context):
     self.hide = self.hide
@@ -85,6 +86,8 @@ def hide_base_sprite(self, context):
     # hide_base_sprite(self)
     functions.hide_base_sprite(context.active_object)
 
+def remove_base_sprite(self, context):
+    export_helper.remove_base_sprite(context.active_object)
 
 def change_slot_mesh(self, context):
     self.slot_index_last = -1
@@ -472,6 +475,8 @@ class SceneProperties(bpy.types.PropertyGroup):
 class MeshProperties(bpy.types.PropertyGroup):
     hide_base_sprite: BoolProperty(default=False, update=hide_base_sprite,
                                                       description="Make sure to hide base sprite when adding a custom mesh.")
+    remove_base_sprite: BoolProperty(default=False, update=remove_base_sprite,
+                                     description="Removes base sprite, usefull if exporting as a 3d model")
 
 class BoneProperties(bpy.types.PropertyGroup):
     favorite: BoolProperty()
